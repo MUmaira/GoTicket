@@ -9,7 +9,7 @@ const Header = () => {
     <div className='header'>
         <p className='logo'>Go Ticket</p>
         <div className='header-right'>
-             <p> <Link to='/account' className='account-link'>
+             <p> <Link to='/account' className='account-link' style={{marginTop:"30px"}}>
                 <FontAwesomeIcon icon={faUser}/> My Account
                 </Link></p>
         </div>

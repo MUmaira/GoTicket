@@ -9,6 +9,8 @@ import TimeTable from './pages/TimeTable';
 import Finances from './pages/Finances';
 import Account from './pages/Account';
 import Header from './components/Header';
+import edtConductor from './components/edtConductor';
+
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
           <Route path='/timetable' Component={TimeTable}/>
           <Route path='/finances' Component={Finances}/>
           <Route path='/account' Component={Account}/>
+          <Route path='/edtConductor' Component={edtConductor}/>
         </Routes>
     </div>
     </BrowserRouter>
