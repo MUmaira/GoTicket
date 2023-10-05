@@ -8,7 +8,7 @@ const SideBar = () => {
     <div className="sidebar">
   
     <ul className="sidebar-list">
-    <br/> <br/>
+    <br/> <br/><br/> <br/><br/>
       <li> <Link to ='/' style={{color:"white", textDecoration:"none"}}>
       <FontAwesomeIcon icon={faBars} style={{marginRight:"10px"}}/>
         Dashboard</Link></li>

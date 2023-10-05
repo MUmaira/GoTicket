@@ -10,6 +10,7 @@ import Finances from './pages/Finances';
 import Account from './pages/Account';
 import Header from './components/Header';
 import edtConductor from './components/edtConductor';
+import ConductorDetails from './components/ConductorDetails';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path='/finances' Component={Finances}/>
           <Route path='/account' Component={Account}/>
           <Route path='/edtConductor' Component={edtConductor}/>
+          <Route path='/edtConductor/:id' Component={edtConductor}/>
         </Routes>
     </div>
     </BrowserRouter>

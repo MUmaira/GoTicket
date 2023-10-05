@@ -1,17 +1,21 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
+import ConductorDetails from '../components/ConductorDetails'
 
 const Conductors = () => {
   return (
     <div>
+      <br/><br/>
       <h2 style={{
         marginTop:"30px",
-        fontSize:"large",
-        color:"#5A5A5A"
+        color:"#5A5A5A",
+        textAlign:"left",
+        marginLeft:"250px"
       }}>Conductor Details</h2>
       <Link to='/edtConductor'>
-      <Button variant="outline-success" style={{marginRight:"50px", float:"right"}}>Add new Conductor</Button></Link>
+      <Button variant="success" style={{marginRight:"50px", float:"right"}}>Add new Conductor</Button></Link>
+      <ConductorDetails />
     </div>
   )
 }
