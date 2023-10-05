@@ -10,7 +10,8 @@ import Finances from './pages/Finances';
 import Account from './pages/Account';
 import Header from './components/Header';
 import edtConductor from './components/edtConductor';
-import ConductorDetails from './components/ConductorDetails';
+
+
 
 
 function App() {

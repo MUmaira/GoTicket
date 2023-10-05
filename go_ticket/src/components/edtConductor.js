@@ -1,12 +1,11 @@
 import React,{useState, useEffect} from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import fireDb from '../config/firebase';
 import {toast} from 'react-toastify'
-import { Toast } from 'react-bootstrap';
+import Alert from 'react-bootstrap/Alert';
 
 const initialState ={
     firstName : "",
@@ -61,21 +60,18 @@ const handleSubmit= (e) =>{
     e.preventDefault();
     
     if(!firstName || !lastName || !routeFrom || !routeTo || !contact || !busNo){
-      <Toast
-      className="d-inline-block m-1"
-      bg="warning"
-    >
-      <Toast.Body className={'warning' === 'Dark' && 'text-white'}>
-        Please Provide the necessary filds
-      </Toast.Body>
-    </Toast>
+      <Alert  variant="danger" style={{ zIndex: 1000 }}>
+      Please Fill Out All the Feilds!
+    </Alert>
     }else{
       if(!id){
         fireDb.child("conductors").push(state, (err)=>{
           if(err){
              toast.error(err)
           }else{
-              toast.success("Conductor Details Added Succesfully!")
+            <Alert variant="success" style={{ zIndex: 1000 }}>
+            Conductor Details Succesfully Added
+          </Alert>
           }
       })
       }else{
