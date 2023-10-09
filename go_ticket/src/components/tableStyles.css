@@ -1,34 +1,34 @@
-.styled-table{
+
+#emp {
     border-collapse: collapse;
-    margin-left: 250px;
-    font-size:medium;
-    font-family: sans-serif;
-    max-width: 2000px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.15);
-}
-
-.styled-table thead tr{
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-}
-
-.styled-table th,
-.styled-table td{
-    padding: 15px;
-}
-
-.styled-table tbody tr{
-    border-bottom: 1px solid #dddddd;
-}
-
-.styled-table tbody tr:nth-of-type(even){
-    background-color: #f3f3f3;
-}
-
-.styled-table tbody tr:last-of-type{
-    border-bottom: 2px solid #009879;
-}
+    width: 70%;
+    margin-left: 300px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  #emp tr, #bils th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-weight: 600;
+  }
+  #emp tr {
+    line-height: 30px;
+  }
+  #emp tr:nth-child(even){background-color: #dbcfe1;}
+  
+  #emp th {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    text-align: center;
+    font-weight: 700;
+    background-color: #9566ab;
+    color: white;
+    
+  }
+  td span {
+    margin-right:15px;
+  }
 
 .btn{
     border: none;
@@ -46,18 +46,18 @@
 .btn-edit{
     background-color: #008cba;
     padding: 5px;
-    margin: 5px;
+    margin-left: 10px;
 }
 
 .btn-delete{
     background-color: #f44336;
     padding: 5px;
-    margin: 5px;
+    margin-left: 10px;
 }
 
 .btn-view{
     background-color: #e7e7e7;
     color: black;
     padding: 5px;
-    margin: 5px;
+    margin-left: 10px;
 }

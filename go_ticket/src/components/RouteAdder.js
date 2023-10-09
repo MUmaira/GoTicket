@@ -13,7 +13,7 @@ const initialState ={
     fare:""
 }
 
-const RouteAdder = () => {
+const RouteAdder = ({ onClose }) => {
    
   const [state, setState] = useState(initialState);
 
@@ -46,16 +46,21 @@ const RouteAdder = () => {
             }
         })
 
-
+        onClose();
         setTimeout(()=> navigate("/routes"), 500)
      }
   }
 
   return (
-    <Card border="success" style={{marginRight:"50px",marginTop:"50px",marginLeft:"1000px", boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'}}>
-      <Card.Header style={{backgroundColor:"#4caf58", color:"white"}}>Add New Route</Card.Header>
+    <Card border="#8C53A6" style={{marginRight:"50px",marginTop:"50px",marginLeft:"500px",width:"40%", boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'}}>
+      <Card.Header style={{backgroundColor:"#8C53A6", color:"white"}}>Add New Route</Card.Header>
       <Card.Body>
-      <Form style={{padding:"5px"}} onSubmit={handleSubmit}>
+      <Form style={{padding:"15px",
+                      backgroundImage: "url(`../images/background.png`)",
+                      backgroundSize: 'cover', 
+                      backgroundPosition: 'center', 
+                      backgroundRepeat: 'no-repeat'
+                  }} onSubmit={handleSubmit}>
       <Form.Group className="mb-2" controlId="origin">
         <Form.Label>Origin :</Form.Label>
         <Form.Control type="text" name='origin' value={origin || ""} style={{textAlign:"center"}} onChange={handleInputChange} />
@@ -80,7 +85,7 @@ const RouteAdder = () => {
       value="Save"
       style={{   
          width:" 50%",
-        backgroundColor:"#4284f5",
+        backgroundColor:"#429e7f",
         color: "white",
         margin: "14px, 20px",
         border : "none",

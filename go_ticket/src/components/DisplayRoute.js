@@ -3,6 +3,8 @@ import './tableStyles.css'
 import fireDb from'../config/firebase'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faEye, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const DisplayRoute = () => {
 
@@ -35,32 +37,40 @@ const DisplayRoute = () => {
   }
 
   return (
-    <table className='styled-table'>
+    <table id='emp'>
             <thead>
               <tr>
-                <th style={{textAlign:"center"}}>No</th>
-                <th style={{textAlign:"center"}}>Route</th>
-                <th style={{textAlign:"center"}}>Fare</th>
+                <th style={{textAlign:"center"}}>Route ID</th>
+                <th style={{textAlign:"center"}}>Route No</th>
+                <th style={{textAlign:"center"}}>Fare (RS)</th>
                 <th style={{textAlign:"center"}}>No of Buses</th>
-                <th style={{textAlign:"center"}}>Action</th>
+                <th style={{textAlign:"center"}}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {Object.keys(data).map((id,index) => {
                 return(
                   <tr key={id}>
-                    <th scope='row'>{index + 1}</th>
+                    <td>R00{index + 1}</td>
                     <td>{data[id].routeNo}</td>
                     <td>{data[id].fare}</td>
                     <td>{data[id].NoOfBus}</td>
                     <td>
-                      <Link to={`/routes/${id}`}>
-                        <button className='btn btn-edit'>Edit</button>
-                      </Link>
-                      <button className='btn btn-delete' onClick={()=> OnDelete(id)}>Delete</button>
+                      <span>
+                        <Link to={`/routes/${id}`}>
+                        <FontAwesomeIcon icon={faPenToSquare}  style={{color:"black"}}/>
+                        </Link>
+                      </span>
+                      <span>
+                      <button style={{ backgroundColor: "transparent",border: "none"}} onClick={()=> OnDelete(id)}>
+                      <FontAwesomeIcon icon={faTrash} />
+                      </button>
+                      </span>
+                      <span>
                       <Link to={`/view/${id}`}>
-                        <button className='btn btn-view'>View</button>
+                        <FontAwesomeIcon icon={faEye} style={{color:"black"}} />
                       </Link>
+                      </span>
                     </td>
                   </tr>
                 )

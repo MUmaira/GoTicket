@@ -46,9 +46,9 @@ const ConductorDetails = () => {
     {Object.keys(data).map((id,index) => {
         return(
             <Col key={id}>
-              <Card border="info"
+              <Card border="#9566ab"
                style={{ width: '18rem',marginLeft:"50px" }}>
-              <Card.Header>C00{index + 1}</Card.Header>
+              <Card.Header style={{backgroundColor:"#9566ab",fontWeight:"bold"}}>C00{index + 1}</Card.Header>
                 <Card.Body>
                   <Card.Title>{data[id].firstName}  {data[id].lastName} </Card.Title>
                   <Card.Text>
