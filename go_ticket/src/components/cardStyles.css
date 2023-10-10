@@ -1,0 +1,28 @@
+
+.custom-card::before,
+.custom-card::after {
+  content: "";
+  position: absolute;
+  width: 30%;
+  height: 70px;
+  background-size: cover;
+}
+
+.custom-card::before {
+  top: 40px;
+  background-image: url('../images/bgTop.png'); /* Relative path to the top image */
+  left: 0;
+  z-index: -1;
+}
+
+.custom-card::after {
+  bottom: 0;
+  background-image: url('../images/bgBottom.png'); /* Relative path to the bottom image */
+  right: 0;
+}
+
+
+
+
+
+

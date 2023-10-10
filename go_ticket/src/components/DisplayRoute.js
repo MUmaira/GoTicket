@@ -4,10 +4,11 @@ import fireDb from'../config/firebase'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faEye, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const DisplayRoute = () => {
-
+  
+  const [seletedRow, setSelectedRow] = useState(null);
     
   const[data, setData] = useState({});
   useEffect(()=>{
@@ -36,6 +37,10 @@ const DisplayRoute = () => {
     }
   }
 
+  const toggleDetails = (rowId) =>{
+    setSelectedRow(seletedRow === rowId ? null : rowId)
+  };
+
   return (
     <table id='emp'>
             <thead>
@@ -50,7 +55,8 @@ const DisplayRoute = () => {
             <tbody>
               {Object.keys(data).map((id,index) => {
                 return(
-                  <tr key={id}>
+                <React.Fragment key={id}>
+                  <tr onClick={()=> toggleDetails(data[id])}>
                     <td>R00{index + 1}</td>
                     <td>{data[id].routeNo}</td>
                     <td>{data[id].fare}</td>
@@ -66,15 +72,19 @@ const DisplayRoute = () => {
                       <FontAwesomeIcon icon={faTrash} />
                       </button>
                       </span>
-                      <span>
-                      <Link to={`/view/${id}`}>
-                        <FontAwesomeIcon icon={faEye} style={{color:"black"}} />
-                      </Link>
-                      </span>
                     </td>
                   </tr>
+                  {seletedRow === data[id] && (
+                    <tr>
+                       <td colSpan="5" style={{padding:"20px"}}>
+                        Origin: {data[id].origin} | Destination: {data[id].destination}
+                       </td>
+                    </tr>
+                  )}
+                  
+                  </React.Fragment>
                 )
-              })}
+             })}
             </tbody>
       </table>
   )

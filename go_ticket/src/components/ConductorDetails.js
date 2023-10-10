@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-
+import './cardStyles.css'
 
 
 const ConductorDetails = () => {
@@ -46,8 +46,8 @@ const ConductorDetails = () => {
     {Object.keys(data).map((id,index) => {
         return(
             <Col key={id}>
-              <Card border="#9566ab"
-               style={{ width: '18rem',marginLeft:"50px" }}>
+              <Card border="#9566ab" className='custom-card'
+               style={{ width: '18rem',marginLeft:"50px",zIndex:"1",backgroundColor:"transparent" }}>
               <Card.Header style={{backgroundColor:"#9566ab",fontWeight:"bold"}}>C00{index + 1}</Card.Header>
                 <Card.Body>
                   <Card.Title>{data[id].firstName}  {data[id].lastName} </Card.Title>

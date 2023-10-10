@@ -10,6 +10,7 @@ import Finances from './pages/Finances';
 import Account from './pages/Account';
 import Header from './components/Header';
 import edtConductor from './components/edtConductor';
+import EditRoute from './components/EditRoute';
 
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route exact path='/' Component={Dashboard}/>
           <Route path='/conductors' Component={Conductors}/>
           <Route path='/routes' Component={BusRoutes}/>
+          <Route path='/routes/:id' Component={EditRoute}/>
           <Route path='/passenger' Component={Passengers}/>
           <Route path='/timetable' Component={TimeTable}/>
           <Route path='/finances' Component={Finances}/>
