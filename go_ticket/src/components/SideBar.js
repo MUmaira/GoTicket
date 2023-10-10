@@ -6,9 +6,13 @@ import {faBars, faCircleInfo, faMoneyBillTrendUp, faPersonWalking, faPersonWalki
 const SideBar = () => {
   return (
     <div className="sidebar">
+
+      <div className='sidebar-header'>
+        Go Ticket
+      </div>
   
     <ul className="sidebar-list">
-    <br/> <br/><br/> <br/><br/>
+    <br/> <br/><br/> 
       <li> <Link to ='/' style={{color:"white", textDecoration:"none"}}>
       <FontAwesomeIcon icon={faBars} style={{marginRight:"10px"}}/>
         Dashboard</Link></li>

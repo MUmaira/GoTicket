@@ -91,11 +91,13 @@ const handleSubmit= (e) =>{
 
   return (
     <div>
+      <br/><br/>
       <h2 style={{
-        marginTop:"30px",
-        fontSize:"large",
-        color:"#5A5A5A"
-      }}>Edit Conductor</h2>
+        marginTop:"0px",
+        color:"#5A5A5A",
+        textAlign:"left",
+        marginLeft:"280px"
+      }}>Edit Conductors</h2>
       <Form style={{marginLeft:"350px",
                     marginRight:"250px",
                     marginTop : "50px",
@@ -104,7 +106,8 @@ const handleSubmit= (e) =>{
                     paddingTop:"30px",
                     paddingBottom:"30px",
                     paddingRight:"50px",
-                    paddingLeft:"50px"}}
+                    paddingLeft:"50px",
+                    width:"60%"}}
                     onSubmit={handleSubmit}>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail" >

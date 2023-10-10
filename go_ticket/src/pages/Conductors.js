@@ -8,10 +8,10 @@ const Conductors = () => {
     <div>
       <br/><br/>
       <h2 style={{
-        marginTop:"30px",
+        marginTop:"0px",
         color:"#5A5A5A",
         textAlign:"left",
-        marginLeft:"250px"
+        marginLeft:"280px"
       }}>Conductor Details</h2>
       <Link to='/edtConductor'>
       <Button variant="success" style={{marginRight:"50px", float:"right"}}>Add new Conductor</Button></Link>

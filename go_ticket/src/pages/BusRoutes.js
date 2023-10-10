@@ -19,10 +19,10 @@ const BusRoutes = () => {
     <div>
       <br/><br/>
       <h2 style={{
-        marginTop:"30px",
+        marginTop:"0px",
         color:"#5A5A5A",
         textAlign:"left",
-        marginLeft:"250px"
+        marginLeft:"280px"
       }}>Available Routes</h2>
     
      <div>

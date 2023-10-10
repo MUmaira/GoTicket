@@ -8,7 +8,7 @@ import Passengers from './pages/Passengers'
 import TimeTable from './pages/TimeTable';
 import Finances from './pages/Finances';
 import Account from './pages/Account';
-import Header from './components/Header';
+//import Header from './components/Header';
 import edtConductor from './components/edtConductor';
 import EditRoute from './components/EditRoute';
 
@@ -19,7 +19,7 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-        <Header/>
+      {/*<Header/>*/}
         <SideBar/>
         <Routes>
           <Route exact path='/' Component={Dashboard}/>

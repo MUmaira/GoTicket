@@ -42,7 +42,7 @@ const ConductorDetails = () => {
   console.log(data)
 
   return (
-    <Row xs={1} md={4} className="g-4"style={{marginLeft:"168px", marginTop:"50px", padding:"15px"}}>
+    <Row xs={1} md={3} className="g-4"style={{marginLeft:"250px", marginTop:"50px", padding:"15px"}}>
     {Object.keys(data).map((id,index) => {
         return(
             <Col key={id}>

@@ -73,7 +73,7 @@ const DisplayRoute = () => {
                       </button>
                       </span>
                       <span>
-                        <FontAwesomeIcon icon={faEye}  style={{color:"black"}}/>
+                        <FontAwesomeIcon icon={faEye}  style={{color:"black", cursor:"pointer"}}/>
                       </span>
                     </td>
                   </tr>
@@ -85,7 +85,7 @@ const DisplayRoute = () => {
                     </tr>
                   )}
                   
-                  </React.Fragment>
+                </React.Fragment>
                 )
              })}
             </tbody>
