@@ -4,7 +4,7 @@ import fireDb from'../config/firebase'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const DisplayRoute = () => {
   
@@ -59,7 +59,7 @@ const DisplayRoute = () => {
                   <tr onClick={()=> toggleDetails(data[id])}>
                     <td>R00{index + 1}</td>
                     <td>{data[id].routeNo}</td>
-                    <td>{data[id].fare}</td>
+                    <td>Rs.{data[id].fare}</td>
                     <td>{data[id].NoOfBus}</td>
                     <td>
                       <span>
@@ -71,6 +71,9 @@ const DisplayRoute = () => {
                       <button style={{ backgroundColor: "transparent",border: "none"}} onClick={()=> OnDelete(id)}>
                       <FontAwesomeIcon icon={faTrash} />
                       </button>
+                      </span>
+                      <span>
+                        <FontAwesomeIcon icon={faEye}  style={{color:"black"}}/>
                       </span>
                     </td>
                   </tr>
