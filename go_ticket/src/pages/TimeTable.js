@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import BusTimeAdder from '../components/BusTimeAdder';
 import Button from 'react-bootstrap/Button';
+import DisplayBusTime from '../components/DisplayBusTime';
 
 
 const TimeTable = () => {
@@ -25,10 +26,10 @@ const TimeTable = () => {
     }}>Bus Time Table</h2>
   
    <div>
-   <Button onClick={openForm} variant="success" style={{marginRight:"60px", float:"right",marginBottom:"20px"}}>New Time Info</Button>
+   <Button onClick={openForm}  style={{marginRight:"60px", float:"right",marginBottom:"20px",backgroundColor:"#429e7f"}}>New Time Info</Button>
    {showForm && <BusTimeAdder onClose={closeForm} />}
    </div>
-   
+   <DisplayBusTime/>
   </div>
   )
 }

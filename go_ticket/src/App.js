@@ -11,6 +11,7 @@ import Account from './pages/Account';
 //import Header from './components/Header';
 import edtConductor from './components/edtConductor';
 import EditRoute from './components/EditRoute';
+import EditTimeTable from './components/EditTimeTable';
 
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='/routes/:id' Component={EditRoute}/>
           <Route path='/passenger' Component={Passengers}/>
           <Route path='/timetable' Component={TimeTable}/>
+          <Route path='/timetable/:id' Component={EditTimeTable}/>
           <Route path='/finances' Component={Finances}/>
           <Route path='/account' Component={Account}/>
           <Route path='/edtConductor' Component={edtConductor}/>
