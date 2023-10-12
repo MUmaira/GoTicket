@@ -5,12 +5,17 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import './dashboardCard.css'
 import { faBus, faDownload, faPersonWalking, faRoute } from '@fortawesome/free-solid-svg-icons';
 import {getColumnSum, getRecordCount} from '../utils/firebaseUtils'
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import moment from "moment";
+import fireDb from '../config/firebase'
 
 const DashboardCard = () => {
  
     const [routeCount, setRouteCount] = useState(0);
     const [conductorCount, setConductorCount] = useState(0);
     const [busSum, setSum] = useState(0);
+    const[data, setData] = useState({});
 
     //function to get and set the no of routes
     useEffect(() =>{
@@ -39,6 +44,71 @@ const DashboardCard = () => {
         })
     },[])
 
+   //fetching data to diaplay in report
+   useEffect(() => {
+    fireDb.child("routes").on("value", (snapshot) => {
+      if (snapshot.val() !== null) {
+        const dataArray = Object.values(snapshot.val());
+        setData(dataArray);
+      } else {
+        setData([]);
+      }
+    });
+  
+    return () => {
+      setData([]);
+    };
+  }, []);
+
+    //generatingRouteReport
+    const generateRouteReport = () => {
+      if (!Array.isArray(data)) {
+        console.error("Data is not an array. Cannot generate the report.");
+        return;
+      }
+      const doc = new jsPDF();
+  
+      // Add the report title to the PDF
+      doc.setFontSize(18);
+      doc.text("Route Details Report", 14, 22);
+  
+      // Add the current date to the PDF
+      const date = moment().format("MMMM Do YYYY, h:mm:ss a");
+      doc.setFontSize(12);
+      doc.text(`Report generated on ${date}`, 14, 32);
+  
+      const columns = [
+        "Route Number",
+        "Origin",
+        "Destination",
+        "Fare",
+      ];
+      const rows = data.map(
+        ({ routeNo, origin, destination, fare, createdAt }) => [
+          routeNo,
+          origin,
+          destination,
+          fare,
+          new Date(createdAt).toLocaleString("en-US", {
+            dateStyle: "short",
+            timeStyle: "short",
+          }),
+        ]
+      );
+  
+      doc.autoTable({
+        head: [columns],
+        body: rows,
+        startY: 40,
+        styles: {
+          fontSize: 12, // Set font size for table content
+          cellPadding: 3, // Set cell padding for table cells
+        },
+      });
+  
+      doc.save("Route_report.pdf");
+    };
+
   return (
     <div style={{display:"flex", marginLeft:"320px"}}>
   <div>
@@ -54,7 +124,7 @@ const DashboardCard = () => {
       </Card.Body>
     </Card>
     <br/>
-    <Button style={{backgroundColor:"#5f2d66",border:"#9566ab",width:"280px"}}>
+    <Button onClick={generateRouteReport} style={{backgroundColor:"#5f2d66",border:"#9566ab",width:"280px"}} >
        Download Report
        <FontAwesomeIcon icon={faDownload} style={{marginLeft:"10px"}} />
     </Button>
