@@ -16,6 +16,7 @@ const DashboardCard = () => {
     const [conductorCount, setConductorCount] = useState(0);
     const [busSum, setSum] = useState(0);
     const[data, setData] = useState({});
+    const[conductor, setConductor] = useState({});
 
     //function to get and set the no of routes
     useEffect(() =>{
@@ -44,7 +45,7 @@ const DashboardCard = () => {
         })
     },[])
 
-   //fetching data to diaplay in report
+   //fetching route data to diaplay in report
    useEffect(() => {
     fireDb.child("routes").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
@@ -109,6 +110,72 @@ const DashboardCard = () => {
       doc.save("Route_report.pdf");
     };
 
+    //getching details to  display in the conductors report
+    useEffect(() => {
+      fireDb.child("conductors").on("value", (snapshot) => {
+        if (snapshot.val() !== null) {
+          const dataArray = Object.values(snapshot.val());
+          setConductor(dataArray);
+        } else {
+          setConductor([]);
+        }
+      });
+    
+      return () => {
+        setConductor([]);
+      };
+    }, []);
+
+    const generateConductorReport = () => {
+      if (!Array.isArray(conductor)) {
+        console.error("Data is not an array. Cannot generate the report.");
+        return;
+      }
+      const doc = new jsPDF();
+  
+      // Add the report title to the PDF
+      doc.setFontSize(18);
+      doc.text("Route Details Report", 14, 22);
+  
+      // Add the current date to the PDF
+      const date = moment().format("MMMM Do YYYY, h:mm:ss a");
+      doc.setFontSize(12);
+      doc.text(`Report generated on ${date}`, 14, 32);
+  
+      const columns = [
+        "First Name",
+        "Assigned Bus No",
+        "Route From",
+        "Route To",
+        "Contact Number"
+      ];
+      const rows = conductor.map(
+        ({ firstName, busNo, routeFrom, routeTo, contact,createdAt }) => [
+          firstName,
+          busNo,
+          routeFrom,
+          routeTo,
+          contact,
+          new Date(createdAt).toLocaleString("en-US", {
+            dateStyle: "short",
+            timeStyle: "short",
+          }),
+        ]
+      );
+  
+      doc.autoTable({
+        head: [columns],
+        body: rows,
+        startY: 40,
+        styles: {
+          fontSize: 12, // Set font size for table content
+          cellPadding: 3, // Set cell padding for table cells
+        },
+      });
+  
+      doc.save("Conductor_report.pdf");
+    };
+
   return (
     <div style={{display:"flex", marginLeft:"320px"}}>
   <div>
@@ -143,8 +210,8 @@ const DashboardCard = () => {
       </Card.Body>
     </Card>
     <br/>
-    <Button style={{backgroundColor:"#5f2d66",border:"#9566ab",marginLeft:"105px",width:"280px"}}>
-        Download Report
+    <Button  style={{backgroundColor:"#5f2d66",border:"#9566ab",marginLeft:"105px",width:"280px"}}>
+        Download Bus Times
         <FontAwesomeIcon icon={faDownload} style={{marginLeft:"10px"}} />
     </Button>
     </div>
@@ -162,7 +229,7 @@ const DashboardCard = () => {
       </Card.Body>
     </Card>
     <br/>
-    <Button style={{backgroundColor:"#5f2d66",border:"#9566ab",marginLeft:"105px",width:"280px"}}>
+    <Button onClick={generateConductorReport} style={{backgroundColor:"#5f2d66",border:"#9566ab",marginLeft:"105px",width:"280px"}}>
         Download Report
         <FontAwesomeIcon icon={faDownload} style={{marginLeft:"10px"}} />
     </Button>
