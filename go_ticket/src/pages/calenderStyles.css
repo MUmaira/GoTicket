@@ -1,0 +1,23 @@
+/* Rounded borders for the entire calendar 
+.react-calendar {
+    border-radius: 8px;
+    border: 1px solid #5f2d66;
+  }*/
+  
+  /* Customize the background color of weekend dates */
+  .react-calendar .react-calendar__tile--weekend {
+    background-color:#b476bc; /* Example background color for weekends */
+    border-radius: 50%;
+  }
+  
+  /* Style for the currently selected date */
+  .react-calendar .react-calendar__tile--active {
+    background-color: #b476bc !important; /* Example background color for the active date */
+    color: white;
+  }
+  
+  /* Style for the hovered date */
+  .react-calendar .react-calendar__tile--hover {
+    background-color: #ddd; 
+  }
+  
