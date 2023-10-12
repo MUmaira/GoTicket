@@ -15,8 +15,10 @@ const DashboardCard = () => {
     const [routeCount, setRouteCount] = useState(0);
     const [conductorCount, setConductorCount] = useState(0);
     const [busSum, setSum] = useState(0);
-    const[data, setData] = useState({});
-    const[conductor, setConductor] = useState({});
+
+    const [data, setData] = useState({});
+    const [conductor, setConductor] = useState({});
+    const [time,setTime]= useState({});
 
     //function to get and set the no of routes
     useEffect(() =>{
@@ -110,7 +112,7 @@ const DashboardCard = () => {
       doc.save("Route_report.pdf");
     };
 
-    //getching details to  display in the conductors report
+    //fetching details to  display in the conductors report
     useEffect(() => {
       fireDb.child("conductors").on("value", (snapshot) => {
         if (snapshot.val() !== null) {
@@ -126,6 +128,7 @@ const DashboardCard = () => {
       };
     }, []);
 
+ //generating conductor details report
     const generateConductorReport = () => {
       if (!Array.isArray(conductor)) {
         console.error("Data is not an array. Cannot generate the report.");
@@ -135,7 +138,7 @@ const DashboardCard = () => {
   
       // Add the report title to the PDF
       doc.setFontSize(18);
-      doc.text("Route Details Report", 14, 22);
+      doc.text("Conductor Details Report", 14, 22);
   
       // Add the current date to the PDF
       const date = moment().format("MMMM Do YYYY, h:mm:ss a");
@@ -176,6 +179,74 @@ const DashboardCard = () => {
       doc.save("Conductor_report.pdf");
     };
 
+    //function to fetch bus Time data
+    useEffect(() => {
+      fireDb.child("timetable").on("value", (snapshot) => {
+        if (snapshot.val() !== null) {
+          const dataArray = Object.values(snapshot.val());
+          setTime(dataArray);
+        } else {
+          setTime([]);
+        }
+      });
+    
+      return () => {
+        setTime([]);
+      };
+    }, []);
+
+    //generating bus time report
+    const generateBusTimeReport = () => {
+      if (!Array.isArray(time)) {
+        console.error("Data is not an array. Cannot generate the report.");
+        return;
+      }
+      const doc = new jsPDF();
+  
+      // Add the report title to the PDF
+      doc.setFontSize(18);
+      doc.text("Bus Times", 14, 22);
+  
+      // Add the current date to the PDF
+      const date = moment().format("MMMM Do YYYY, h:mm:ss a");
+      doc.setFontSize(12);
+      doc.text(`Report generated on ${date}`, 14, 32);
+  
+      const columns = [
+        "Route Number",
+        "Start",
+        "Starting Time",
+        "Destination",
+        "Reaching Time"
+      ];
+      const rows = time.map(
+        ({ routeNo, start, startTime, destination, endTime,createdAt }) => [
+          routeNo,
+          start,
+          startTime,
+          destination,
+          endTime,
+          new Date(createdAt).toLocaleString("en-US", {
+            dateStyle: "short",
+            timeStyle: "short",
+          }),
+        ]
+      );
+  
+      doc.autoTable({
+        head: [columns],
+        body: rows,
+        startY: 40,
+        styles: {
+          fontSize: 12, // Set font size for table content
+          cellPadding: 3, // Set cell padding for table cells
+        },
+      });
+  
+      doc.save("Bus_Time_report.pdf");
+    };
+
+
   return (
     <div style={{display:"flex", marginLeft:"320px"}}>
   <div>
@@ -210,7 +281,7 @@ const DashboardCard = () => {
       </Card.Body>
     </Card>
     <br/>
-    <Button  style={{backgroundColor:"#5f2d66",border:"#9566ab",marginLeft:"105px",width:"280px"}}>
+    <Button onClick={generateBusTimeReport} style={{backgroundColor:"#5f2d66",border:"#9566ab",marginLeft:"105px",width:"280px"}}>
         Download Bus Times
         <FontAwesomeIcon icon={faDownload} style={{marginLeft:"10px"}} />
     </Button>
