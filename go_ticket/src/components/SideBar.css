@@ -36,6 +36,7 @@
     color: white;
     transition: 0.3s;
     cursor: pointer;
+    margin-bottom: 20px;
   }
   
   .sidebar-list li:hover {
@@ -51,5 +52,5 @@
   color: #666f7f; 
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 50px;
+  margin-top: 25px;
 }
