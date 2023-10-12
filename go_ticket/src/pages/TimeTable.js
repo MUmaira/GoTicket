@@ -26,7 +26,7 @@ const TimeTable = () => {
     }}>Bus Time Table</h2>
   
    <div>
-   <Button onClick={openForm}  style={{marginRight:"60px", float:"right",marginBottom:"20px",backgroundColor:"#429e7f"}}>New Time Info</Button>
+   <Button onClick={openForm}  style={{marginRight:"60px", float:"right",marginBottom:"20px",backgroundColor:"#429e7f",border:"#429e7f"}}>New Time Info</Button>
    {showForm && <BusTimeAdder onClose={closeForm} />}
    </div>
    <DisplayBusTime/>

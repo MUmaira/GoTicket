@@ -103,7 +103,7 @@ const EditTimeTable = ({ onClose }) => {
     <div>
         <br/>
       <h2 style={{
-        marginTop:"20px",
+        marginTop:"0px",
         color:"#5A5A5A",
         textAlign:"left",
         marginLeft:"250px"

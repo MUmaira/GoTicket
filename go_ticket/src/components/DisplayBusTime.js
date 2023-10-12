@@ -69,7 +69,7 @@ const DisplayBusTime = () => {
       <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} style={{marginRight:"30px",color:"white"}}/>
       </div>
       {isOpen && (
-        <div style={{ border: '1px solid black', padding: '10px',marginLeft:"250px",marginRight:"74px",borderRadius:"10px",backgroundColor:"#ddd" }}>
+        <div style={{ border: '1px solid black', padding: '10px',marginLeft:"250px",marginRight:"74px",borderRadius:"10px",backgroundColor:"#fff",boxShadow: '4px 4px 8px rgba(0, 0, 0, 0.1)' }}>
         <Row gutter={2}>
             <Col>
                Starting From: 

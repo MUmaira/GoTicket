@@ -3,9 +3,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import Card from 'react-bootstrap/Card';
 import fireDb from '../config/firebase';
 import {toast} from 'react-toastify'
 import Alert from 'react-bootstrap/Alert';
+import './routeAdder.css'
 
 const initialState ={
     firstName : "",
@@ -98,17 +100,11 @@ const handleSubmit= (e) =>{
         textAlign:"left",
         marginLeft:"280px"
       }}>Edit Conductors</h2>
-      <Form style={{marginLeft:"350px",
-                    marginRight:"250px",
-                    marginTop : "50px",
-                    border:"1px solid #5A5A5A",
-                    borderRadius:"10px",
-                    paddingTop:"30px",
-                    paddingBottom:"30px",
-                    paddingRight:"50px",
-                    paddingLeft:"50px",
-                    width:"60%"}}
-                    onSubmit={handleSubmit}>
+
+    <Card border="#8C53A6" className='custom-card1' style={{marginRight:"50px",marginTop:"50px",marginLeft:"500px",marginBottom:"10px",width:"40%", boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',background:"tranparent",zIndex:"1"}}>
+      <Card.Header style={{backgroundColor:"#8C53A6", color:"white"}}>Add / Edit Conductor</Card.Header>
+      <Card.Body>
+      <Form onSubmit={handleSubmit}>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail" >
           <Form.Label>First Name</Form.Label>
@@ -168,6 +164,8 @@ const handleSubmit= (e) =>{
         padding: "12px"}}/>
   
     </Form>
+    </Card.Body>
+    </Card>
     </div>
   )
 }

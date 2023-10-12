@@ -26,7 +26,7 @@ const BusRoutes = () => {
       }}>Available Routes</h2>
     
      <div>
-     <Button onClick={openForm} variant="success" style={{marginRight:"60px", float:"right",marginBottom:"20px"}}>Add new Route</Button>
+     <Button onClick={openForm}  style={{marginRight:"60px", float:"right",marginBottom:"20px",backgroundColor:"#429e7f"}}>Add new Route</Button>
      {showForm && <RouteAdder onClose={closeForm} />}
      </div>
       <div>
