@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card';
 import fireDb from '../config/firebase';
 import {toast} from 'react-toastify'
 import Alert from 'react-bootstrap/Alert';
-import './routeAdder.css'
+import '../styles/routeAdder.css'
 
 const initialState ={
     firstName : "",

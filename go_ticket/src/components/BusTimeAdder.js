@@ -4,7 +4,7 @@ import fireDb from '../config/firebase'
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { toast } from 'react-toastify';
-import './routeAdder.css'
+import '../styles/routeAdder.css'
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/Col';
 

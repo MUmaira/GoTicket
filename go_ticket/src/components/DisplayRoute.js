@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import './tableStyles.css'
+import '../styles/tableStyles.css'
 import fireDb from'../config/firebase'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'

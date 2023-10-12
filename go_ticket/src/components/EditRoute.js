@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { toast } from 'react-toastify';
 import Alert from 'react-bootstrap/Alert';
-import './routeAdder.css'
+import '../styles/routeAdder.css'
 
 const initialState ={
     origin: "",

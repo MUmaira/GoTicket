@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import DashboardCard from '../components/DashboardCard'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import './calenderStyles.css'
+import '../styles/calenderStyles.css'
 import lineChart from '../images/lineChart.png'
 import pieChart from '../images/pieChart1.png'
 import passengerChart from '../images/passengerDetails.png'

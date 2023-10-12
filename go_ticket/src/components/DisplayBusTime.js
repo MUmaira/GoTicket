@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faBusSimple, faChevronDown, faChevronUp, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import fireDb from '../config/firebase'
 import {toast} from 'react-toastify'
-import './TimeContainer.css'
+import '../styles/TimeContainer.css'
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { Link } from 'react-router-dom';

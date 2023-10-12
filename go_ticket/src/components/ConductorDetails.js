@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import './cardStyles.css'
+import '../styles/cardStyles.css'
 
 
 const ConductorDetails = () => {

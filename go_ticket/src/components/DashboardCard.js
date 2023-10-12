@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import './dashboardCard.css'
+import '../styles/dashboardCard.css'
 import { faBus, faDownload, faPersonWalking, faRoute } from '@fortawesome/free-solid-svg-icons';
 import {getColumnSum, getRecordCount} from '../utils/firebaseUtils'
 import jsPDF from "jspdf";
