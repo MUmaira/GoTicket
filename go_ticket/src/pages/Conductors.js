@@ -14,7 +14,7 @@ const Conductors = () => {
         marginLeft:"280px"
       }}>Conductor Details</h2>
       <Link to='/edtConductor'>
-      <Button variant="success" style={{marginRight:"50px", float:"right"}}>Add new Conductor</Button></Link>
+      <Button  style={{marginRight:"50px", float:"right",backgroundColor:"#429e7f"}}>Add new Conductor</Button></Link>
       <ConductorDetails />
     </div>
   )

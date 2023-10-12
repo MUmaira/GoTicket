@@ -1,6 +1,6 @@
 
-.custom-card::before,
-.custom-card::after {
+.custom-card-dashboard::before,
+.custom-card-dashboard::after {
   content: "";
   position: absolute;
   width: 30%;
@@ -8,14 +8,14 @@
   background-size: cover;
 }
 
-.custom-card::before {
-  top: 40px;
+.custom-card-dashboard::before {
+  top: -1px;
   background-image: url('../images/bgTop.png'); /* Relative path to the top image */
   left: 0;
   z-index: -1;
 }
 
-.custom-card::after {
+.custom-card-dashboard::after {
   bottom: 0;
   background-image: url('../images/bgBottom.png'); /* Relative path to the bottom image */
   z-index: -1;
