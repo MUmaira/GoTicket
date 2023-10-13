@@ -39,7 +39,7 @@ const AuthManager = () => {
   return (
     <div>
         <br />
-    <Card className='custom-card1'>
+    <Card className='custom-card2'>
     <Card.Body style={{zIndex:"1"}}>
     <div style={{ maxWidth: '400px', margin: 'auto', textAlign: 'center' }}>
       <h2 style={{ marginBottom: '40px', marginTop:"30px" }}>{action === 'signup' ? 'Signup' : 'Signin'}</h2>
