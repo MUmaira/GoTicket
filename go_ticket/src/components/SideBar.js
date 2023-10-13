@@ -41,7 +41,7 @@ const SideBar = () => {
       <FontAwesomeIcon icon={faMoneyBillTrendUp} style={{marginRight:"10px",marginLeft:"-19px"}} />
         Finances</Link></li>
 
-        <li><Link to ='/' style={{color:"white", textDecoration:"none"}}>
+        <li><Link to ='/dashboard' style={{color:"white", textDecoration:"none"}}>
       <FontAwesomeIcon icon={faCircleInfo} style={{marginRight:"10px",marginLeft:"-38px"}} />
         About</Link></li>
     </ul>
