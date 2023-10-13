@@ -8,12 +8,12 @@ import Passengers from './pages/Passengers'
 import TimeTable from './pages/TimeTable';
 import Finances from './pages/Finances';
 import Account from './pages/Account';
-//import Header from './components/Header';
+
 import edtConductor from './components/edtConductor';
 import EditRoute from './components/EditRoute';
 import EditTimeTable from './components/EditTimeTable';
 
-
+import AuthManager from './auth/AuthManager';
 
 
 function App() {
@@ -23,7 +23,8 @@ function App() {
       {/*<Header/>*/}
         <SideBar/>
         <Routes>
-          <Route exact path='/' Component={Dashboard}/>
+          <Route exact path='/' Component={AuthManager}/>
+          <Route path='/dashboard' Component={Dashboard}/>
           <Route path='/conductors' Component={Conductors}/>
           <Route path='/routes' Component={BusRoutes}/>
           <Route path='/routes/:id' Component={EditRoute}/>

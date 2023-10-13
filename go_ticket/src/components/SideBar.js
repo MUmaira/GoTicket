@@ -15,7 +15,7 @@ const SideBar = () => {
     <FontAwesomeIcon icon={faBus} size="2xl" style={{color: "#808999",marginTop:"10px",height:"45px"}} />
     <ul className="sidebar-list" style={{marginTop:"50px"}}> 
      
-      <li> <Link to ='/' style={{color:"white", textDecoration:"none"}}>
+      <li> <Link to ='/dashboard' style={{color:"white", textDecoration:"none"}}>
       <FontAwesomeIcon icon={faBars} style={{marginRight:"10px"}}/>
         Dashboard</Link></li>
       {/*<br/> <br/>*/}
@@ -46,8 +46,9 @@ const SideBar = () => {
         About</Link></li>
     </ul>
     <button className='button'> 
+    <Link  to ='/' style={{ color:"#666f7f", textDecoration:"none"}}>
     Log Out
-    <FontAwesomeIcon icon={faRightFromBracket} rotation={180}  style={{marginLeft:"15px", color:"#666f7f"}}/></button>
+    <FontAwesomeIcon icon={faRightFromBracket} rotation={180}  style={{marginLeft:"15px", color:"#666f7f"}}/></Link></button>
   </div>
   )
 }
