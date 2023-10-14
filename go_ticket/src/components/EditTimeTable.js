@@ -111,7 +111,7 @@ const EditTimeTable = ({ onClose }) => {
 
    <div>
     <Card border="#8C53A6" className='custom-card1' style={{marginRight:"50px",marginTop:"50px",marginLeft:"500px",marginBottom:"10px",width:"40%", boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',background:"tranparent",zIndex:"1"}}>
-      <Card.Header style={{backgroundColor:"#8C53A6", color:"white"}}>Add New Time</Card.Header>
+      <Card.Header style={{backgroundColor:"#8C53A6", color:"white"}}>Update Bus Time</Card.Header>
       <Card.Body>
       <Form style={{padding:"15px"}} onSubmit={handleSubmit}>
       <Form.Group className="mb-2" controlId="origin">
