@@ -10,7 +10,7 @@ describe('ConductorsContainer', () => {
     
     // Assert that ConductorsPresentation is rendered
     expect(getByText('Add new Conductor')).toBeInTheDocument();
-    //expect(getByText('')).toBeInTheDocument();
+   
  
   });
 });
