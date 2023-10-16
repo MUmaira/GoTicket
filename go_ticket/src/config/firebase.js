@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/database'
 
+//configuration for the database
 const firebaseConfig = {
   apiKey: "AIzaSyCdzDwEi9sEa90EWcbkCYOQ_AL-ASnL9qw",
   authDomain: "goticket-d73bb.firebaseapp.com",
@@ -10,6 +11,8 @@ const firebaseConfig = {
   appId: "1:753202050140:web:6fee00b3384a88050de299"
 };
 
+//initializing the database
 const firedb = firebase.initializeApp(firebaseConfig);
 
+//exporting the database referece /* for the Singleton Design Pattern */
 export default firedb.database().ref();

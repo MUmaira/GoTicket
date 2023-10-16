@@ -1,7 +1,8 @@
-import React,{useState} from 'react'
-import RouteAdder from '../components/RouteAdder'
-import DisplayRoute from '../components/DisplayRoute'
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import DisplayRoute from '../components/DisplayRoute';
+import React,{useState} from 'react';
+import RouteAdder from '../components/RouteAdder';
+
 
 const BusRoutes = () => {
 
@@ -23,11 +24,16 @@ const BusRoutes = () => {
         color:"#5A5A5A",
         textAlign:"left",
         marginLeft:"280px"
-      }}>Available Routes</h2>
+        }}>
+        Available Routes
+      </h2>
     
      <div>
-     <Button onClick={openForm}  style={{marginRight:"60px", float:"right",marginBottom:"20px",backgroundColor:"#429e7f"}}>Add new Route</Button>
-     {showForm && <RouteAdder onClose={closeForm} />}
+       <Button onClick={openForm}  style={{marginRight:"60px", float:"right",marginBottom:"20px",backgroundColor:"#429e7f"}}>
+          Add new Route
+       </Button>
+       {/** */}
+       {showForm && <RouteAdder onClose={closeForm} />}
      </div>
       <div>
         <DisplayRoute/>

@@ -2,6 +2,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/database'
 
+//configuration for the database
 const firebaseConfig = {
   apiKey: "AIzaSyCdzDwEi9sEa90EWcbkCYOQ_AL-ASnL9qw",
   authDomain: "goticket-d73bb.firebaseapp.com",
