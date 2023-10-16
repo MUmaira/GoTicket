@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom'; // Importing directly without /extend-expect
-import BusRoutesContainer from './BusRoutes';
+import BusRoutesContainer from '../BusRoutes';
 
 describe('BusRoutesContainer', () => {
   test('renders BusRoutesPresentation with initial state', () => {
