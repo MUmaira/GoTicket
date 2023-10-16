@@ -14,5 +14,4 @@ const firebaseConfig = {
 //initializing the database
 const firedb = firebase.initializeApp(firebaseConfig);
 
-//exporting the database referece /* for the Singleton Design Pattern */
 export default firedb.database().ref();
