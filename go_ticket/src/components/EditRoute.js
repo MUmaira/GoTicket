@@ -1,12 +1,13 @@
-import React,{useState, useEffect} from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
-import fireDb from '../config/firebase'
-import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
-import { toast } from 'react-toastify';
 import Alert from 'react-bootstrap/Alert';
+import Card from 'react-bootstrap/Card';
+import fireDb from '../config/firebase';
+import Form from 'react-bootstrap/Form';
+import React,{useState, useEffect} from 'react';
+import { toast } from 'react-toastify';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../styles/routeAdder.css'
 
+//defining the initial state
 const initialState ={
     origin: "",
     destination:"",
@@ -25,6 +26,7 @@ const EditRoute = () => {
   const navigate = useNavigate();
   const {id} = useParams();
 
+  //fetching values from the database
   useEffect(()=>{
     fireDb.child("routes").on("value", (snapshot) => {
       if(snapshot.val() !== null){
@@ -62,6 +64,7 @@ const EditRoute = () => {
         toast.error("Please provide all information")
      }else{
         if(!id){
+          // Adding data to the dataase
           fireDb.child("routes").push(state, (err)=>{
             if(err){
                toast.error(err)
@@ -72,6 +75,7 @@ const EditRoute = () => {
             }
         })
         }else{
+          // Updating data in the database
           fireDb.child(`routes/${id}`).set(state, (err)=>{
             if(err){
               toast.error(err)
@@ -98,41 +102,40 @@ const EditRoute = () => {
     <Card border="#8C53A6" className='custom-card1' style={{marginRight:"100px",marginTop:"50px",marginLeft:"500px",width:"40%", boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',background:"tranparent",zIndex:"1"}}>
       <Card.Header style={{backgroundColor:"#8C53A6", color:"white"}}>Update Route</Card.Header>
       <Card.Body>
-      <Form style={{padding:"15px"}} onSubmit={handleSubmit}>
-      <Form.Group className="mb-2" controlId="origin">
-        <Form.Label>Origin :</Form.Label>
-        <Form.Control type="text" name='origin' value={origin || ""} style={{textAlign:"center"}} onChange={handleInputChange} />
-      </Form.Group>
-      <Form.Group className="mb-2" controlId="destination">
-        <Form.Label>Destination :</Form.Label>
-        <Form.Control type="text" name='destination' value={destination || ""} style={{textAlign:"center"}} onChange={handleInputChange} />
-      </Form.Group>
-      <Form.Group className="mb-2" controlId="routeNo">
-        <Form.Label>Route Number :</Form.Label>
-        <Form.Control type="number"  name='routeNo' value={routeNo || ""} style={{textAlign:"center"}}  onChange={handleInputChange}/>
-      </Form.Group>
-      <Form.Group className="mb-2" controlId="NoOfBus">
-        <Form.Label>Number of Busses per Route :</Form.Label>
-        <Form.Control type="number" name='NoOfBus' value={NoOfBus || ""} style={{textAlign:"center"}}   onChange={handleInputChange} />
-      </Form.Group>
-      <Form.Group className="mb-2" controlId="seats">
-        <Form.Label>Bus Fare :</Form.Label>
-        <Form.Control type="number" name='fare' value={fare || ""} style={{textAlign:"center",zIndex:"2"}}   onChange={handleInputChange} />
-      </Form.Group>
-      <input variant="success" type="submit" 
-      value={id ? "Update" : "Save"}
-      style={{   
-         width:" 50%",
-        backgroundColor:"#429e7f",
-        color: "white",
-        margin: "14px, 20px",
-        border : "none",
-        borderRadius: "4px",
-        cursor: "pointer",
-        padding: "8px"}}
-        />
-    </Form>
-    
+       <Form style={{padding:"15px"}} onSubmit={handleSubmit}>
+         <Form.Group className="mb-2" controlId="origin">
+            <Form.Label>Origin :</Form.Label>
+            <Form.Control type="text" name='origin' value={origin || ""} style={{textAlign:"center"}} onChange={handleInputChange} />
+         </Form.Group>
+         <Form.Group className="mb-2" controlId="destination">
+           <Form.Label>Destination :</Form.Label>
+           <Form.Control type="text" name='destination' value={destination || ""} style={{textAlign:"center"}} onChange={handleInputChange} />
+         </Form.Group>
+         <Form.Group className="mb-2" controlId="routeNo">
+           <Form.Label>Route Number :</Form.Label>
+           <Form.Control type="number"  name='routeNo' value={routeNo || ""} style={{textAlign:"center"}}  onChange={handleInputChange}/>
+         </Form.Group>
+         <Form.Group className="mb-2" controlId="NoOfBus">
+           <Form.Label>Number of Busses per Route :</Form.Label>
+           <Form.Control type="number" name='NoOfBus' value={NoOfBus || ""} style={{textAlign:"center"}}   onChange={handleInputChange} />
+         </Form.Group>
+         <Form.Group className="mb-2" controlId="seats">
+           <Form.Label>Bus Fare :</Form.Label>
+           <Form.Control type="number" name='fare' value={fare || ""} style={{textAlign:"center",zIndex:"2"}}   onChange={handleInputChange} />
+         </Form.Group>
+         <input variant="success" type="submit" 
+              value={id ? "Update" : "Save"}
+              style={{   
+                width:" 50%",
+                backgroundColor:"#429e7f",
+                color: "white",
+                margin: "14px, 20px",
+                border : "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+                padding: "8px"}}
+          />
+       </Form>
       </Card.Body>
     </Card>
     </div>

@@ -1,14 +1,14 @@
-import React,{useState, useEffect} from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import '../styles/dashboardCard.css'
 import { faBus, faDownload, faPersonWalking, faRoute } from '@fortawesome/free-solid-svg-icons';
-import {getColumnSum, getRecordCount} from '../utils/firebaseUtils'
+import fireDb from '../config/firebase'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getColumnSum, getRecordCount } from '../utils/firebaseUtils'
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import moment from "moment";
-import fireDb from '../config/firebase'
+import React,{useState, useEffect} from 'react'
+import '../styles/dashboardCard.css'
 
 const DashboardCard = () => {
  
@@ -49,19 +49,19 @@ const DashboardCard = () => {
 
    //fetching route data to diaplay in report
    useEffect(() => {
-    fireDb.child("routes").on("value", (snapshot) => {
-      if (snapshot.val() !== null) {
-        const dataArray = Object.values(snapshot.val());
-        setData(dataArray);
-      } else {
-        setData([]);
-      }
-    });
+     fireDb.child("routes").on("value", (snapshot) => {
+       if (snapshot.val() !== null) {
+         const dataArray = Object.values(snapshot.val());
+         setData(dataArray);
+       } else {
+         setData([]);
+       }
+      });
   
-    return () => {
+      return () => {
       setData([]);
-    };
-  }, []);
+      };
+    }, []);
 
     //generatingRouteReport
     const generateRouteReport = () => {
@@ -71,11 +71,11 @@ const DashboardCard = () => {
       }
       const doc = new jsPDF();
   
-      // Add the report title to the PDF
+      // Adding the report title to the PDF
       doc.setFontSize(18);
       doc.text("Route Details Report", 14, 22);
   
-      // Add the current date to the PDF
+      // Adding the current date to the PDF
       const date = moment().format("MMMM Do YYYY, h:mm:ss a");
       doc.setFontSize(12);
       doc.text(`Report generated on ${date}`, 14, 32);
@@ -104,8 +104,8 @@ const DashboardCard = () => {
         body: rows,
         startY: 40,
         styles: {
-          fontSize: 12, // Set font size for table content
-          cellPadding: 3, // Set cell padding for table cells
+          fontSize: 12, 
+          cellPadding: 3, 
         },
       });
   
@@ -114,7 +114,7 @@ const DashboardCard = () => {
 
     //fetching details to  display in the conductors report
     useEffect(() => {
-      fireDb.child("conductors").on("value", (snapshot) => {
+     fireDb.child("conductors").on("value", (snapshot) => {
         if (snapshot.val() !== null) {
           const dataArray = Object.values(snapshot.val());
           setConductor(dataArray);
@@ -136,11 +136,11 @@ const DashboardCard = () => {
       }
       const doc = new jsPDF();
   
-      // Add the report title to the PDF
+      // Adding the report title to the PDF
       doc.setFontSize(18);
       doc.text("Conductor Details Report", 14, 22);
   
-      // Add the current date to the PDF
+      // Adding the current date to the PDF
       const date = moment().format("MMMM Do YYYY, h:mm:ss a");
       doc.setFontSize(12);
       doc.text(`Report generated on ${date}`, 14, 32);
@@ -171,8 +171,8 @@ const DashboardCard = () => {
         body: rows,
         startY: 40,
         styles: {
-          fontSize: 12, // Set font size for table content
-          cellPadding: 3, // Set cell padding for table cells
+          fontSize: 12, 
+          cellPadding: 3, 
         },
       });
   
@@ -203,11 +203,11 @@ const DashboardCard = () => {
       }
       const doc = new jsPDF();
   
-      // Add the report title to the PDF
+      // Adding the report title to the PDF
       doc.setFontSize(18);
       doc.text("Bus Times", 14, 22);
   
-      // Add the current date to the PDF
+      // Adding the current date to the PDF
       const date = moment().format("MMMM Do YYYY, h:mm:ss a");
       doc.setFontSize(12);
       doc.text(`Report generated on ${date}`, 14, 32);
@@ -238,8 +238,8 @@ const DashboardCard = () => {
         body: rows,
         startY: 40,
         styles: {
-          fontSize: 12, // Set font size for table content
-          cellPadding: 3, // Set cell padding for table cells
+          fontSize: 12, 
+          cellPadding: 3, 
         },
       });
   
@@ -249,7 +249,7 @@ const DashboardCard = () => {
 
   return (
     <div style={{display:"flex", marginLeft:"320px"}}>
-  <div>
+    <div>
    <Card className='custom-card-dashboard' style={{ width: '18rem',marginTop:"20px",boxShadow: '4px 4px 8px rgba(0, 0, 0, 0.1)',background:"transparent",overflow:"hidden",zIndex:"1"  }}>
       <Card.Body>
         <Card.Title>

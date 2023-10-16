@@ -1,21 +1,23 @@
-import React,{useState,useEffect} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faBusSimple, faChevronDown, faChevronUp, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
-import fireDb from '../config/firebase'
-import {toast} from 'react-toastify'
-import '../styles/TimeContainer.css'
-import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
+import { faBusSimple, faChevronDown, faChevronUp, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import fireDb from '../config/firebase';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import React,{ useState,useEffect } from 'react';
+import Row from 'react-bootstrap/esm/Row';
+import { toast } from 'react-toastify'
+import '../styles/TimeContainer.css'
 
 const DisplayBusTime = () => {
+
     const [isOpen, setIsOpen] = useState(false);
-    const[data, setData] = useState({});
+    const [data, setData] = useState({});
 
     const toggleAccordion = () => {
         setIsOpen(!isOpen);
       };
    
+      //fetching bus time values from the database
       useEffect(()=>{
         fireDb.child("timetable").on("value", (snapshot) => {
           if(snapshot.val() !== null){
@@ -30,6 +32,7 @@ const DisplayBusTime = () => {
         }
       }, [])
 
+    //deleting a bus time record
     const OnDelete = (id) =>{
         if(window.confirm("Are sure you want to delete? ")){
           fireDb.child(`timetable/${id}`).remove((err) =>{

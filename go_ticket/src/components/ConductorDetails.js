@@ -1,18 +1,21 @@
-import React,{useState,useEffect} from 'react'
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row'
-import fireDb from '../config/firebase'
-import {toast} from 'react-toastify'
-import Button from 'react-bootstrap/Button';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import fireDb from '../config/firebase'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import React,{useState,useEffect} from 'react'
+import Row from 'react-bootstrap/Row'
+import {toast} from 'react-toastify'
 import '../styles/cardStyles.css'
 
 
 const ConductorDetails = () => {
+
  const[data, setData] = useState({});
+
+ //fetching coonductor data form the database
   useEffect(()=>{
     fireDb.child("conductors").on("value", (snapshot) => {
       if(snapshot.val() !== null){
@@ -27,6 +30,7 @@ const ConductorDetails = () => {
     }
   }, [])
 
+  //deleting conductor data from the database
   const OnDelete = (id) =>{
     if(window.confirm("Are sure you want to delete? ")){
       fireDb.child(`conductors/${id}`).remove((err) =>{
@@ -43,12 +47,12 @@ const ConductorDetails = () => {
 
   return (
     <Row xs={1} md={3} className="g-4"style={{marginLeft:"250px", marginTop:"50px", padding:"15px"}}>
-    {Object.keys(data).map((id,index) => {
+     {Object.keys(data).map((id,index) => {
         return(
             <Col key={id}>
               <Card border="#9566ab" className='custom-card'
                style={{ width: '18rem',marginLeft:"50px",zIndex:"1",backgroundColor:"transparent" }}>
-              <Card.Header style={{backgroundColor:"#9566ab",fontWeight:"bold"}}>C00{index + 1}</Card.Header>
+                <Card.Header style={{backgroundColor:"#9566ab",fontWeight:"bold"}}>C00{index + 1}</Card.Header>
                 <Card.Body>
                   <Card.Title>{data[id].firstName}  {data[id].lastName} </Card.Title>
                   <Card.Text>
@@ -68,9 +72,8 @@ const ConductorDetails = () => {
               </Card>
             </Col>
           )
-
-    } )}
-  </Row>
+      } )}
+   </Row>
       
   )
 }

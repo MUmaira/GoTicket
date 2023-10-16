@@ -1,16 +1,17 @@
-import React,{useState,useEffect} from 'react'
-import '../styles/tableStyles.css'
-import fireDb from'../config/firebase'
-import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
+import { faEye, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import fireDb from'../config/firebase';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faEye, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
+import React,{ useState,useEffect } from 'react';
+import { toast } from 'react-toastify'
+import '../styles/tableStyles.css'
 
 const DisplayRoute = () => {
   
   const [seletedRow, setSelectedRow] = useState(null);
-    
-  const[data, setData] = useState({});
+  const [data, setData] = useState({});
+
+  //fetching route details from the database
   useEffect(()=>{
     fireDb.child("routes").on("value", (snapshot) => {
       if(snapshot.val() !== null){
@@ -25,6 +26,7 @@ const DisplayRoute = () => {
     }
   }, [])
 
+  //deleting route details from the database
   const OnDelete = (id) =>{
     if(window.confirm("Are sure you want to delete? ")){
       fireDb.child(`routes/${id}`).remove((err) =>{
