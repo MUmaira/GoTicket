@@ -1,23 +1,13 @@
-import Button from 'react-bootstrap/Button'
-import ConductorDetails from '../components/ConductorDetails'
-import { Link } from 'react-router-dom'
-import React from 'react'
+/**Container-presentation design pattern */
+/**Conductor container */
+import React from 'react';
+import ConductorsPresentation from '../presnetations/ConductorsPresentation';
 
-const Conductors = () => {
+const ConductorsContainer = () => {
   return (
-    <div>
-      <br/><br/>
-      <h2 style={{
-        marginTop:"0px",
-        color:"#5A5A5A",
-        textAlign:"left",
-        marginLeft:"280px"
-      }}>Conductor Details</h2>
-      <Link to='/edtConductor'>
-      <Button  style={{marginRight:"50px", float:"right",backgroundColor:"#429e7f"}}>Add new Conductor</Button></Link>
-      <ConductorDetails />
-    </div>
-  )
-}
+    <ConductorsPresentation />
+  );
+};
 
-export default Conductors
+export default ConductorsContainer;
+

@@ -1,11 +1,9 @@
-import Button from 'react-bootstrap/Button';
-import DisplayRoute from '../components/DisplayRoute';
-import React,{useState} from 'react';
-import RouteAdder from '../components/RouteAdder';
+/**container - presentation design pattern */
+/*container component for bus route*/
+import BusRoutesPresentation from '../presnetations/BusRoutesPresentation';
+import React, { useState } from 'react';
 
-
-const BusRoutes = () => {
-
+const BusRoutesContainer = () => {
   const [showForm, setShowForm] = useState(false);
 
   const openForm = () => {
@@ -17,29 +15,13 @@ const BusRoutes = () => {
   };
 
   return (
-    <div>
-      <br/><br/>
-      <h2 style={{
-        marginTop:"0px",
-        color:"#5A5A5A",
-        textAlign:"left",
-        marginLeft:"280px"
-        }}>
-        Available Routes
-      </h2>
-    
-     <div>
-       <Button onClick={openForm}  style={{marginRight:"60px", float:"right",marginBottom:"20px",backgroundColor:"#429e7f"}}>
-          Add new Route
-       </Button>
-       {/** */}
-       {showForm && <RouteAdder onClose={closeForm} />}
-     </div>
-      <div>
-        <DisplayRoute/>
-      </div>
-    </div>
-  )
-}
+    <BusRoutesPresentation
+      showForm={showForm}
+      openForm={openForm}
+      closeForm={closeForm}
+    />
+  );
+};
 
-export default BusRoutes
+export default BusRoutesContainer;
+

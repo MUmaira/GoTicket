@@ -7,7 +7,6 @@ import BusRoutes from './pages/BusRoutes';
 import Passengers from './pages/Passengers'
 import TimeTable from './pages/TimeTable';
 import Finances from './pages/Finances';
-import Account from './pages/Account';
 
 import edtConductor from './components/edtConductor';
 import EditRoute from './components/EditRoute';
@@ -20,7 +19,6 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-      {/*<Header/>*/}
         <SideBar/>
         <Routes>
           <Route exact path='/' Component={AuthManager}/>
@@ -32,7 +30,6 @@ function App() {
           <Route path='/timetable' Component={TimeTable}/>
           <Route path='/timetable/:id' Component={EditTimeTable}/>
           <Route path='/finances' Component={Finances}/>
-          <Route path='/account' Component={Account}/>
           <Route path='/edtConductor' Component={edtConductor}/>
           <Route path='/edtConductor/:id' Component={edtConductor}/>
         </Routes>
