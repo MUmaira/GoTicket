@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import ConductorsContainer from './Conductors';
+import ConductorsContainer from '../Conductors';
 
 describe('ConductorsContainer', () => {
   test('renders ConductorsPresentation', () => {
