@@ -16,14 +16,16 @@ const initialState ={
     routeFrom : "",
     routeTo : "",
     contact : "",
-    busNo : ""
+    busNo : "",
+    email:"",
+    password:"",
 }
 
 const EdtConductor = () => {
     const [state, setState] = useState(initialState);
     const [data, setData] = useState({})
 
-    const {firstName, lastName,routeFrom,routeTo,contact,busNo} = state;
+    const {firstName, lastName,routeFrom,routeTo,contact,busNo,email,password} = state;
 
     const navigate = useNavigate();
     const {id} = useParams();
@@ -63,7 +65,7 @@ const handleInputChange = (e) =>{
 const handleSubmit= (e) =>{
     e.preventDefault();
     
-    if(!firstName || !lastName || !routeFrom || !routeTo || !contact || !busNo){
+    if(!firstName || !lastName || !routeFrom || !routeTo || !contact || !busNo ||!email || !password){
       <Alert  variant="danger" style={{ zIndex: 1000 }}>
        Please Fill Out All the Feilds!
       </Alert>
@@ -154,12 +156,27 @@ const handleSubmit= (e) =>{
                         onChange={handleInputChange}/>
                 </Form.Group>
              </Row>
+             <Row className="mb-3">
+               <Form.Group as={Col} controlId="formGridCity">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control type='email' placeholder='Enter email adddress' 
+                        name='email' value={email || ""} 
+                        onChange={handleInputChange}/>
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="formGridZip">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control type='password' placeholder='Enter Password' 
+                        name='password' value={password || ""} 
+                        onChange={handleInputChange}/>
+                </Form.Group>
+             </Row>
              <br/><br/>
-             <input variant="success" type="submit" 
+             <input  type="submit" 
                 value={id ? "Update" : "Save"}
                 style={{   
                 width:" 50%",
-                backgroundColor:"#4caf58",
+                backgroundColor:"#429e7f",
                 color: "white",
                 margin: "14px, 20px",
                 border : "none",
