@@ -3,7 +3,8 @@ import fireDb from'../config/firebase';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import React,{ useState,useEffect } from 'react';
-import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer,toast } from 'react-toastify'
 import '../styles/tableStyles.css'
 
 const DisplayRoute = () => {
@@ -44,6 +45,7 @@ const DisplayRoute = () => {
   };
 
   return (
+    <div>
     <table id='emp'>
             <thead>
               <tr>
@@ -92,6 +94,8 @@ const DisplayRoute = () => {
              })}
             </tbody>
       </table>
+     <ToastContainer/>
+  </div>
   )
 }
 

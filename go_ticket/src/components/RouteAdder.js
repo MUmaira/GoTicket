@@ -2,7 +2,8 @@ import Card from 'react-bootstrap/Card';
 import fireDb from '../config/firebase'
 import Form from 'react-bootstrap/Form';
 import React,{useState} from 'react';
-import { toast } from 'react-toastify';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import '../styles/routeAdder.css'
 
@@ -38,7 +39,7 @@ const RouteAdder = ({ onClose }) => {
             if(err){
                 toast.error(err)
             }else{
-                toast.success("Rote Added Succesfully")
+                toast.success("Route Added Succesfully")
                 setState({
                     origin: "",
                     destination:"",
@@ -55,6 +56,7 @@ const RouteAdder = ({ onClose }) => {
   }
 
   return (
+    <div>
     <Card border="#8C53A6" className='custom-card1' style={{marginRight:"50px",marginTop:"50px",marginLeft:"500px",width:"40%", boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',background:"tranparent",zIndex:"1"}}>
       <Card.Header style={{backgroundColor:"#8C53A6", color:"white"}}>Add New Route</Card.Header>
       <Card.Body>
@@ -95,6 +97,8 @@ const RouteAdder = ({ onClose }) => {
        </Form>
       </Card.Body>
     </Card>
+    <ToastContainer/>
+    </div>
   )
 }
 

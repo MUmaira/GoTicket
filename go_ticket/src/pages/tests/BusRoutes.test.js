@@ -1,35 +1,50 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom'; // Importing directly without /extend-expect
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom'; 
 import BusRoutesContainer from '../BusRoutes';
+import { MemoryRouter } from 'react-router-dom';
+import { getByText, getByLabelText, getByDisplayValue} from '@testing-library/react';
 
 describe('BusRoutesContainer', () => {
   test('renders BusRoutesPresentation with initial state', () => {
-    const { getByText } = render(<BusRoutesContainer />);
+    const { getByText } = render(
+    <MemoryRouter>
+    <BusRoutesContainer />
+    </MemoryRouter>
+    );
     
     // Assert that BusRoutesPresentation is rendered
     expect(getByText('Available Routes')).toBeInTheDocument();
   });
 
-  test('opens and closes the form correctly', () => {
-    const { getByText } = render(<BusRoutesContainer />);
-
+  test('opens and closes the form correctly', async () => {
+    const { getByText, getByLabelText, queryByText, container } = render(
+      <MemoryRouter>
+        <BusRoutesContainer />
+      </MemoryRouter>
+    );
+  
     // Open the form
-    fireEvent.click(getByText('Add new Route'));
-
+    fireEvent.click(container.querySelector('.card-header button'));
+  
     // Assert that the form heading is displayed
-    expect(getByText('Add New Route')).toBeInTheDocument(); 
-    expect(getByText('Submit')).toBeInTheDocument();
-
-    //simulating filling out the form
-    fireEvent.change(getByLabelText('Route Number'), { target: { value: '17' } });
-    fireEvent.change(getByLabelText('Origin'), { target: { value: 'City A' } });
-
+    expect(container.querySelector('.card-header')).toHaveTextContent('Add New Route');
+    const submitButton = container.querySelector('input[type="submit"][value="Save"]');
+    expect(submitButton).toBeInTheDocument();
+  
+    // Wait for the form to appear and then simulate filling out the form
+    await waitFor(() => {
+      fireEvent.change(getByLabelText('Route Number :'), { target: { value: '17' } });
+      fireEvent.change(getByLabelText('Origin :'), { target: { value: 'City A' } });
+    });
+  
     // Close the form
-    fireEvent.click(getByText('Close Form'));
-
+    fireEvent.click(container.querySelector('.card-header button'));
+  
     // Assert that the form is closed
     expect(queryByText('Add New Route')).toBeNull();
-    expect(queryByText('Submit')).toBeNull();
-      });
+    expect(queryByText('Save')).toBeNull();
+  });
+   
+  
 });

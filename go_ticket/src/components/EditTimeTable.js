@@ -1,11 +1,11 @@
-import AlertHeading from 'react-bootstrap/esm/AlertHeading';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import fireDb from '../config/firebase';
 import Form from 'react-bootstrap/Form';
 import React,{ useState,useEffect } from 'react'
+import 'react-toastify/dist/ReactToastify.css';
 import Row from 'react-bootstrap/esm/Row';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../styles/routeAdder.css'
 
@@ -81,9 +81,7 @@ const EditTimeTable = () => {
             if(err){
                toast.error(err)
             }else{
-              <AlertHeading variant="success" style={{ zIndex: 1000 }}>
-               Bus Time Details Succesfully Added
-             </AlertHeading>
+             toast.success('Bus Time details Added')
             }
         })
         }else{
@@ -92,9 +90,7 @@ const EditTimeTable = () => {
             if(err){
               toast.error(err)
             }else{
-              <AlertHeading variant="success" style={{ zIndex: 1000 }}>
-                Bus Time Updated Succesfully
-              </AlertHeading>
+             toast.success('Bus time detials updated succesfully')
             }
           })
         }
@@ -197,6 +193,7 @@ const EditTimeTable = () => {
        </Card.Body>
      </Card>
     </div>
+    <ToastContainer/>
     </div>
   )
 }

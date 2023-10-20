@@ -4,8 +4,9 @@ import fireDb from '../config/firebase';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import React,{ useState,useEffect } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
 import Row from 'react-bootstrap/esm/Row';
-import { toast } from 'react-toastify'
+import { ToastContainer,toast } from 'react-toastify'
 import '../styles/TimeContainer.css'
 
 const DisplayBusTime = () => {
@@ -196,7 +197,7 @@ const DisplayBusTime = () => {
   </React.Fragment>
   )
 })}
-    
+   <ToastContainer/> 
   </div>
   )
 }

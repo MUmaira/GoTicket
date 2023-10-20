@@ -1,9 +1,9 @@
-import Alert from 'react-bootstrap/Alert';
 import Card from 'react-bootstrap/Card';
 import fireDb from '../config/firebase';
 import Form from 'react-bootstrap/Form';
 import React,{useState, useEffect} from 'react';
-import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer,toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../styles/routeAdder.css'
 
@@ -69,9 +69,7 @@ const EditRoute = () => {
             if(err){
                toast.error(err)
             }else{
-              <Alert variant="success" style={{ zIndex: 1000 }}>
-              Conductor Details Succesfully Added
-            </Alert>
+            toast.success('Route Added Succesfully')
             }
         })
         }else{
@@ -139,6 +137,7 @@ const EditRoute = () => {
       </Card.Body>
     </Card>
     </div>
+    <ToastContainer/>
     </div>
   )
 }

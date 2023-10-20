@@ -1,11 +1,11 @@
-import Alert from 'react-bootstrap/Alert';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import fireDb from '../config/firebase';
 import Form from 'react-bootstrap/Form';
 import React,{useState, useEffect} from 'react'
 import Row from 'react-bootstrap/Row';
-import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer,toast} from 'react-toastify'
 import { useNavigate, useParams } from 'react-router-dom';
 import '../styles/routeAdder.css'
 
@@ -66,9 +66,7 @@ const handleSubmit= (e) =>{
     e.preventDefault();
     
     if(!firstName || !lastName || !routeFrom || !routeTo || !contact || !busNo ||!email || !password){
-      <Alert  variant="danger" style={{ zIndex: 1000 }}>
-       Please Fill Out All the Feilds!
-      </Alert>
+      toast.error('Please provide the required details')
     }else{
       //adding new conductor
       if(!id){
@@ -76,9 +74,7 @@ const handleSubmit= (e) =>{
           if(err){
              toast.error(err)
           }else{
-            <Alert variant="success" style={{ zIndex: 1000 }}>
-             Conductor Details Succesfully Added
-           </Alert>
+            toast.success('Conductor details added succesfully')
           }
       })
       }else{
@@ -187,6 +183,7 @@ const handleSubmit= (e) =>{
           </Form>
          </Card.Body>
        </Card>
+       <ToastContainer/>
    </div>
   )
 }

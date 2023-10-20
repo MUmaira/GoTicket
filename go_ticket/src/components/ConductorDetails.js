@@ -5,9 +5,10 @@ import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import fireDb from '../config/firebase'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react';
+import 'react-toastify/dist/ReactToastify.css';
 import Row from 'react-bootstrap/Row'
-import {toast} from 'react-toastify'
+import {ToastContainer,toast} from 'react-toastify'
 import '../styles/cardStyles.css'
 
 
@@ -37,7 +38,7 @@ const ConductorDetails = () => {
         if(err){
           toast.error(err)
         }else{
-          toast.warning("Contact has been deleted")
+          toast.warning("Conductor details deleted")
         }
       })
     }
@@ -46,6 +47,7 @@ const ConductorDetails = () => {
   console.log(data)
 
   return (
+    <div>
     <Row xs={1} md={3} className="g-4"style={{marginLeft:"250px", marginTop:"50px", padding:"15px"}}>
      {Object.keys(data).map((id,index) => {
         return(
@@ -74,7 +76,8 @@ const ConductorDetails = () => {
           )
       } )}
    </Row>
-      
+   <ToastContainer/>
+   </div>    
   )
 }
 

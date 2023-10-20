@@ -83,7 +83,7 @@ const BusTimeAdder = ({ onClose }) => {
       <Card.Body>
        <Form style={{padding:"15px"}} onSubmit={handleSubmit}>
          <Form.Group className="mb-2" controlId="origin">
-           <Form.Label>Rout No :</Form.Label>
+           <Form.Label>Route No :</Form.Label>
            <Form.Control type="number" name='routeNo' value={routeNo || ""} style={{textAlign:"center"}} onChange={handleInputChange} />
           </Form.Group>
          <Row>
@@ -147,6 +147,7 @@ const BusTimeAdder = ({ onClose }) => {
          <br/>
          <input variant="success" type="submit" 
              value="Save"
+             name='Save'
              style={{   
              width:" 50%",
              backgroundColor:"#429e7f",
