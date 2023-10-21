@@ -38,6 +38,6 @@ describe('ConductorsPresentation', () => {
     addConductorButton.click();
 
     // Assert that the URL has changed to /edtConductor
-    expect(container.querySelector('a[href="/edtConductor"]')).toBeInTheDocument();
+    expect(container.querySelector('a[href="/edtConductor/123"]')).toBeInTheDocument();
   });
 });

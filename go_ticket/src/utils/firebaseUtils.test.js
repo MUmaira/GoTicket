@@ -1,11 +1,10 @@
-// Import necessary modules
 import { getRecordCount, getColumnSum } from './firebaseUtils'; 
 import fireDb from '../config/firebase';
 
 // Mock the firebase module
 jest.mock('../config/firebase', () => ({
   child: jest.fn(() => ({
-    once: jest.fn(() => Promise.resolve({ val: jest.fn(() => 'someValue') })),
+    once: jest.fn(() => Promise.resolve({ val: jest.fn(() => 'someValue'), numChildren: () => 5 })),
   })),
 }));
 
@@ -18,18 +17,22 @@ describe('Firebase Utility Functions', () => {
 
       await getRecordCount(tableName, callback);
 
+      // Test that the Firebase methods are called
       expect(fireDb.child).toHaveBeenCalledWith(tableName);
       expect(fireDb.child().once).toHaveBeenCalledWith('value');
-      expect(callback).toHaveBeenCalledWith('someValue');
+      expect(callback).toHaveBeenCalledWith(5); // Using numChildren from the snapshot
     });
 
     it('should handle errors when fetching record count', async () => {
       const tableName = 'routes';
       const callback = jest.fn();
+      
+      // Mock the once method to simulate an error
       fireDb.child().once.mockImplementation(() => Promise.reject('Error'));
 
       await getRecordCount(tableName, callback);
 
+      // Verify that the callback is called with null when an error occurs
       expect(callback).toHaveBeenCalledWith(null);
     });
   });
@@ -37,32 +40,42 @@ describe('Firebase Utility Functions', () => {
   // Test suite for getColumnSum function
   describe('getColumnSum', () => {
     it('should calculate column sum correctly', async () => {
-        const columnName = 'NoOfBus'; 
-    const callback = jest.fn();
+      const columnName = 'NoOfBus'; 
+      const callback = jest.fn();
 
-    // Mocking Firebase child and once methods
-    jest.spyOn(global, 'parseFloat').mockReturnValue(5); 
+      // Mocking Firebase child and once methods
+      jest.spyOn(global, 'parseFloat').mockReturnValue(5); 
 
-    await getColumnSum('routes', columnName, callback, mockDatabaseRef);
+      await getColumnSum('routes', columnName, callback);
 
-    expect(callback).toHaveBeenCalledWith(219);
-  });
+      // Verify that the callback is called with the expected value
+      expect(callback).toHaveBeenCalledWith(219);
+    });
 
-  it('handles non-numeric values gracefully', async () => {
-    const columnName = 'NoOfBus'; 
-    const callback = jest.fn();
+    it('handles non-numeric values gracefully', async () => {
+      const columnName = 'NoOfBus'; 
+      const callback = jest.fn();
 
-    // Mocking Firebase child and once methods
-    jest.spyOn(global, 'parseFloat').mockReturnValue(NaN);
+      // Mocking Firebase child and once methods
+      jest.spyOn(global, 'parseFloat').mockReturnValue(NaN);
 
-    await getColumnSum('routes', columnName, callback, mockDatabaseRef);
+      await getColumnSum('routes', columnName, callback);
 
-    expect(callback).toHaveBeenCalledWith(0);
-  });
-});
+      // Verify that the callback is called with 0 for non-numeric values
+      expect(callback).toHaveBeenCalledWith(0);
     });
 
     it('should handle errors when calculating column sum', async () => {
-      // TODO: Write your error handling test case for getColumnSum
-    });
+      const columnName = 'NoOfBus'; 
+      const callback = jest.fn();
+      
+      // Mocking the once method to simulate an error
+      fireDb.child().once.mockImplementation(() => Promise.reject('Error'));
 
+      await getColumnSum('routes', columnName, callback);
+
+      // Verify that the callback is called with 0 when an error occurs
+      expect(callback).toHaveBeenCalledWith(0);
+    });
+  });
+});

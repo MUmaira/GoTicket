@@ -1,4 +1,4 @@
-/**conntainer - presentation design pattern */
+/**container - presentation design pattern */
 /**presentation component for bus route */
 import Button from 'react-bootstrap/Button';
 import DisplayRoute from '../components/DisplayRoute';
