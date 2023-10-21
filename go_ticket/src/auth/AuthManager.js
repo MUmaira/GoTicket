@@ -1,6 +1,7 @@
 import { auth, database} from '../config/AuthDb';
 import Card from 'react-bootstrap/Card';
 import React, { useState } from 'react';
+import { ToastContainer,toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import '../styles/loginCard.css'
 
@@ -28,10 +29,11 @@ const AuthManager = () => {
           email: user.email,
         });
       }
-
+      toast.success(`${action} succesfull`)
       console.log(`${action} successful`);
     } catch (error) {
       console.error(`${action} error:`, error.message);
+      toast.error(error.message);
     }
   };
 
@@ -82,6 +84,7 @@ const AuthManager = () => {
          </div>
        </Card.Body>
       </Card>
+      <ToastContainer/>
     </div>
   );
 };
