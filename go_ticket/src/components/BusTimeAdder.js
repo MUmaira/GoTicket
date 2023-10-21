@@ -35,7 +35,7 @@ const BusTimeAdder = ({ onClose }) => {
 
   const navigate = useNavigate();
 
-  //functions to handle inout data
+  //functions to handle input data
   const handleInputChange = (e) => {
     const {name, value} = e.target;
     setState({...state, [name]: value})
