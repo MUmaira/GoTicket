@@ -1,9 +1,10 @@
+import BusRoutesContainer from '../BusRoutes';
+import { getByText, getByLabelText, getByDisplayValue} from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom'; 
-import BusRoutesContainer from '../BusRoutes';
-import { MemoryRouter } from 'react-router-dom';
-import { getByText, getByLabelText, getByDisplayValue} from '@testing-library/react';
+
 
 describe('BusRoutesContainer', () => {
   test('renders BusRoutesPresentation with initial state', () => {
@@ -24,7 +25,7 @@ describe('BusRoutesContainer', () => {
       </MemoryRouter>
     );
   
-    // Open the form
+    // Opening the form
     fireEvent.click(container.querySelector('.card-header button'));
   
     // Assert that the form heading is displayed
@@ -38,7 +39,7 @@ describe('BusRoutesContainer', () => {
       fireEvent.change(getByLabelText('Origin :'), { target: { value: 'City A' } });
     });
   
-    // Close the form
+    // Closing the form
     fireEvent.click(container.querySelector('.card-header button'));
   
     // Assert that the form is closed
