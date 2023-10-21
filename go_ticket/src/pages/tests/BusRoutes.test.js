@@ -33,7 +33,7 @@ describe('BusRoutesContainer', () => {
     const submitButton = container.querySelector('input[type="submit"][value="Save"]');
     expect(submitButton).toBeInTheDocument();
   
-    // Wait for the form to appear and then simulate filling out the form
+    //simulating filling out the form
     await waitFor(() => {
       fireEvent.change(getByLabelText('Route Number :'), { target: { value: '17' } });
       fireEvent.change(getByLabelText('Origin :'), { target: { value: 'City A' } });
