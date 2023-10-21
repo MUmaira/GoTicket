@@ -17,7 +17,7 @@ describe('Firebase Utility Functions', () => {
 
       await getRecordCount(tableName, callback);
 
-      // Test that the Firebase methods are called
+      // Asserts that the Firebase methods are called
       expect(fireDb.child).toHaveBeenCalledWith(tableName);
       expect(fireDb.child().once).toHaveBeenCalledWith('value');
       expect(callback).toHaveBeenCalledWith(5); // Using numChildren from the snapshot
@@ -32,7 +32,7 @@ describe('Firebase Utility Functions', () => {
 
       await getRecordCount(tableName, callback);
 
-      // Verify that the callback is called with null when an error occurs
+      // Verifying that the callback is called with null when an error occurs
       expect(callback).toHaveBeenCalledWith(null);
     });
   });
@@ -48,7 +48,7 @@ describe('Firebase Utility Functions', () => {
 
       await getColumnSum('routes', columnName, callback);
 
-      // Verify that the callback is called with the expected value
+      // Verifying that the callback is called with the expected value
       expect(callback).toHaveBeenCalledWith(219);
     });
 
@@ -61,7 +61,7 @@ describe('Firebase Utility Functions', () => {
 
       await getColumnSum('routes', columnName, callback);
 
-      // Verify that the callback is called with 0 for non-numeric values
+      // Verifying that the callback is called with 0 for non-numeric values
       expect(callback).toHaveBeenCalledWith(0);
     });
 
@@ -74,7 +74,7 @@ describe('Firebase Utility Functions', () => {
 
       await getColumnSum('routes', columnName, callback);
 
-      // Verify that the callback is called with 0 when an error occurs
+      // Verifying that the callback is called with 0 when an error occurs
       expect(callback).toHaveBeenCalledWith(0);
     });
   });
